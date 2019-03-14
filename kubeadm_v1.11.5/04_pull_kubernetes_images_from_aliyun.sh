@@ -11,6 +11,7 @@ ETCD_VERSION=3.2.18
 CORE_DNS_VERSION=1.1.3
 
 GCR_URL=k8s.gcr.io
+ETCD_URL=registry.cn-shenzhen.aliyuncs.com/cookcodeblog
 ALIYUN_URL=registry-vpc.cn-beijing.aliyuncs.com/acs
 
 # When test v1.11.0, I found Kubernetes depends on both pause-amd64:3.1 and pause:3.1 
@@ -21,9 +22,11 @@ kube-controller-manager-amd64:${KUBE_VERSION}
 kube-apiserver-amd64:${KUBE_VERSION}
 pause-amd64:${KUBE_PAUSE_VERSION}
 pause:${KUBE_PAUSE_VERSION}
-etcd-amd64:${ETCD_VERSION}
 coredns:${CORE_DNS_VERSION})
 
+docker pull $ETCD_URL/etcd-amd64:${ETCD_VERSION}
+docker tag $ETCD_URL/etcd-amd64:${ETCD_VERSION} $GCR_URL/etcd-amd64:${ETCD_VERSION}
+docker rmi $ETCD_URL/etcd-amd64:${ETCD_VERSION}
 
 for imageName in ${images[@]} ; do
   docker pull $ALIYUN_URL/$imageName
