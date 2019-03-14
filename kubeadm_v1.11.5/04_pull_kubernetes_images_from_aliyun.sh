@@ -11,7 +11,7 @@ ETCD_VERSION=3.2.18
 CORE_DNS_VERSION=1.1.3
 
 GCR_URL=k8s.gcr.io
-ALIYUN_URL=ALIYUN_URL=registry-vpc.cn-beijing.aliyuncs.com/acs
+ALIYUN_URL=registry-vpc.cn-beijing.aliyuncs.com/acs
 
 # When test v1.11.0, I found Kubernetes depends on both pause-amd64:3.1 and pause:3.1 
 
